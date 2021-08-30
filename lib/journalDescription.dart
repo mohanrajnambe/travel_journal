@@ -22,7 +22,10 @@ class JournalDescription extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text(this.title),
+        title: Text(this.title,
+            style: GoogleFonts.poppins(
+              color: Colors.white,
+            )),
       ),
       body: SingleChildScrollView(
         // scrollDirection: Axis.vertical,

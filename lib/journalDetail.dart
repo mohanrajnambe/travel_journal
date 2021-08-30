@@ -24,6 +24,8 @@ class _JournalDetailState extends State<JournalDetail> {
   bool _favourite = false;
   @override
   Widget build(BuildContext context) {
+    // print('HI');
+    // print(widget.title);
     return Scaffold(
         body: Container(
           decoration: BoxDecoration(color: Colors.white),
@@ -35,79 +37,80 @@ class _JournalDetailState extends State<JournalDetail> {
             children: [
               Stack(
                 children: <Widget>[
-                  Expanded(
-                    flex: 4,
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.65,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          image: DecorationImage(
-                              image: AssetImage(widget.image),
-                              fit: BoxFit.cover)),
-                    ),
+                  // Expanded(
+                  // flex: 2,
+                  // child:
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.65,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        image: DecorationImage(
+                            image: AssetImage(widget.image),
+                            fit: BoxFit.cover)),
                   ),
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.fromLTRB(0, 3, 3, 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              IconButton(
-                                onPressed: () => {
-                                  Navigator.pop(context),
+                  // ),
+                  // Expanded(
+                  //   // flex: 1,
+                  //   child:
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.fromLTRB(0, 3, 3, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            IconButton(
+                              onPressed: () => {
+                                Navigator.pop(context),
+                              },
+                              icon: Icon(
+                                Icons.keyboard_arrow_left,
+                                size: 40,
+                                color: Colors.white,
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _favourite = !_favourite;
+                                  });
                                 },
                                 icon: Icon(
-                                  Icons.keyboard_arrow_left,
-                                  size: 40,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _favourite = !_favourite;
-                                    });
-                                  },
-                                  icon: Icon(
-                                    Icons.favorite,
-                                    color: _favourite
-                                        ? Color(0xFFFF4F61)
-                                        : Colors.white,
-                                    size: 30,
-                                  )),
-                            ],
-                          ),
+                                  Icons.favorite,
+                                  color: _favourite
+                                      ? Color(0xFFFF4F61)
+                                      : Colors.white,
+                                  size: 30,
+                                )),
+                          ],
                         ),
-                        Container(
-                          child: Column(
-                            children: [
-                              Text(
-                                widget.title,
+                      ),
+                      Container(
+                        child: Column(
+                          children: [
+                            Text(
+                              widget.title,
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize:
+                                      MediaQuery.of(context).size.height * 0.04,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                            Text(widget.date,
                                 style: GoogleFonts.poppins(
                                     color: Colors.white,
                                     fontSize:
                                         MediaQuery.of(context).size.height *
-                                            0.04,
-                                    fontWeight: FontWeight.w900),
-                              ),
-                              Text(widget.date,
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontSize:
-                                          MediaQuery.of(context).size.height *
-                                              0.02,
-                                      fontWeight: FontWeight.w500))
-                            ],
-                          ),
+                                            0.02,
+                                    fontWeight: FontWeight.w500))
+                          ],
                         ),
-                      ],
-                    ),
-                  )
+                      ),
+                    ],
+                  ),
+                  // )
                 ],
               ),
               GestureDetector(
